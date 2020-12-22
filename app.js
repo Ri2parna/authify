@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const app = express();
+const PORT = process.env.PORT || 3000
 
 // middleware
 app.use(express.static("public"));
@@ -13,14 +14,15 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 
 // database connection
-const dbURI = "mongodb://localhost:27017/users";
+const dbURI =
+  "mongodb+srv://authify-express-backend:iv8j9knyesvDLf13@notedlycluster.flnto.mongodb.net/authify?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .then((result) => app.listen(3000))
+  .then((result) => app.listen(PORT))
   .catch((err) => console.log(err));
 
 // routes

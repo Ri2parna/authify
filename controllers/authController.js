@@ -51,10 +51,11 @@ module.exports.login_post = async (req, res) => {
       res.cookie("jwt", token, {
         maxAge: 1000 * 60 * 60 * 24 * 3,
         httpOnly: true,
-      }); 
-      res.status(201).json({user: user._id});
+      });
+      res.status(201).json({ user: user._id });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res.status(400).json({ error: "Error using Login function" });
   }
 };
