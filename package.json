@@ -35,6 +35,7 @@
     "supertest": "^6.0.1"
   },
   "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prestart": "babel ./src --out-dir build",
     "start": "node ./build/bin/www",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
