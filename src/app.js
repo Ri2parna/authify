@@ -4,23 +4,21 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRoutes = require('./routes/authRoutes');
+import { connectionString } from './settings';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // middleware
 app.use(express.static(`${__dirname}/public`));
 app.use(express.json());
 app.use(cookieParser());
-// view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, './views'));
 
+// view engine
 // database connection
-const dbURI =
-  'mongodb+srv://authify-express-backend:iv8j9knyesvDLf13@notedlycluster.flnto.mongodb.net/authify?retryWrites=true&w=majority';
+const dbURI = process.env.CONNECTION_STRING;
 mongoose
-  .connect(dbURI, {
+  .connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
