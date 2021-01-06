@@ -17,5 +17,5 @@ before_script:
 script:
   - yarn test
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESUL
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
