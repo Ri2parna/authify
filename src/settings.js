@@ -1,3 +1,4 @@
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+dotenv.config(path.resolve(__dirname, '/.env'));
 export const connectionString = process.env.CONNECTION_STRING;
