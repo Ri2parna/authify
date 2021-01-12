@@ -1,10 +1,11 @@
 // imports
+import { connectionString } from './settings';
+
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRoutes = require('./routes/authRoutes');
-import { connectionString } from './settings';
 
 const app = express();
 const PORT = process.env.PORT || 4000;

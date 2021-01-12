@@ -4,10 +4,10 @@ const User = require('../models/User');
 const handleErrors = (err) => {
   // validation errors
   const error = { email: '', password: '' };
-  // if (err.code === 11000) {
-  //  error.email = "Email already exists";
-  //  return error;
-  // }
+  if (err.code === 11000) {
+    error.email = 'Email already exists';
+    return error;
+  }
   if (err.message.includes('user validation failed')) {
     Object.values(err.errors).forEach(({ properties }) => {
       error[properties.path] = properties.message;
@@ -50,7 +50,7 @@ module.exports.login_post = async (req, res) => {
       res.status(201).json({ user: user._id });
     }
   } catch (err) {
-    console.error(err);
+    console.eror(err);
     res.status(400).json({ error: 'Error using Login function' });
   }
 };
