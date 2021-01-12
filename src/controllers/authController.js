@@ -50,7 +50,6 @@ module.exports.login_post = async (req, res) => {
       res.status(201).json({ user: user._id });
     }
   } catch (err) {
-    console.eror(err);
     res.status(400).json({ error: 'Error using Login function' });
   }
 };
