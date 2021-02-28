@@ -6,6 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRoutes = require('./routes/authRoutes');
+const appRoutes = require('./routes/appRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -28,4 +29,5 @@ mongoose
 
 // routes
 app.use('/v1', authRoutes);
+app.use('/v1', appRoutes);
 module.exports = app;
