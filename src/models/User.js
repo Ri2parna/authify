@@ -4,6 +4,11 @@ const { isEmail } = require('validator');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    unique: true,
+    minlength: [6, 'Minimum length of username should be 6 characters'],
+  },
   email: {
     type: String,
     required: true,
@@ -16,6 +21,12 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: [6, 'Minimum password length is 6 characters'],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  fName: String,
+  lName: String,
 });
 // runs this hook before storing the database
 userSchema.pre('save', async function (next) {

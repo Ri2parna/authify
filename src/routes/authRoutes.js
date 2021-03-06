@@ -5,6 +5,9 @@ const router = Router();
 
 router.post('/signup', authController.signup_post);
 router.post('/login', authController.login_post);
+router.get('/hello', (req, res) => {
+  res.send('HEllo bruh');
+});
 
 // router.get('/signup', authController.signup_get);
 // router.get('/login', authController.login_get);
