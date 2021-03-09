@@ -6,7 +6,7 @@ const router = Router();
 router.post('/signup', authController.signup_post);
 router.post('/login', authController.login_post);
 router.get('/hello', (req, res) => {
-  res.send('HEllo bruh');
+  res.send('Hello bruh');
 });
 
 // router.get('/signup', authController.signup_get);

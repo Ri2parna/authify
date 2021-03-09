@@ -4,13 +4,11 @@ import appController from '../controllers/appController';
 const appRouter = Router();
 
 appRouter.get('/posts', appController.postList);
-
 appRouter.get('/post/:postId', appController.postDetails);
+appRouter.get('/:post/:postId/comments', appController.postComments);
 
-appRouter.get('/user/:userId', (req, res) => {
-  res.send(req.params);
-});
-appRouter.post('/user/:userId', (req, res) => {
-  res.send(res.params);
-});
+appRouter.get('/user/:userId', appController.userDetails);
+appRouter.post('/user/:userId', appController.setUserDetails);
+appRouter.post('/:user/post', appController.createPost);
+
 module.exports = appRouter;
