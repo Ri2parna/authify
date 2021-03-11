@@ -1,6 +1,6 @@
 // perfoms the logic for the api requests form the application
 const Post = require('../models/Post');
-
+const PostContent = require('../models/PostContent');
 /* Endpoint: /posts: returns a list of posts 
 content of each card ==> 
 {
@@ -34,7 +34,14 @@ Returns: {
 }
  */
 module.exports.postDetails = (req, res) => {
-  res.send(req.params);
+  let postId = req.params.postId;
+  try {
+    PostContent.findOne({ _id: postId }).then((data) =>
+      res.status(201).json(data)
+    );
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 /*
