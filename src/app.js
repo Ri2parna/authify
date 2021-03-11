@@ -1,5 +1,5 @@
 // imports
-import { connectionString } from './settings';
+import { connectionString, connectionPORT } from './settings';
 
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -9,7 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const appRoutes = require('./routes/appRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = connectionPORT || 4000;
 
 // middleware
 app.use(express.static(`${__dirname}/public`));
@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 // view engine
 // database connection
-const dbURI = process.env.CONNECTION_STRING;
+
 mongoose
   .connect(connectionString, {
     useNewUrlParser: true,

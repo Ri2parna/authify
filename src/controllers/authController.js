@@ -30,7 +30,7 @@ module.exports.signup_post = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 3,
       httpOnly: true,
     });
-    res.status(201).json({ user: user._id });
+    res.status(201).json({ user: user, token: token });
   } catch (err) {
     const caughtErrors = handleErrors(err);
     res.status(400).json({ caughtErrors });
@@ -47,7 +47,7 @@ module.exports.login_post = async (req, res) => {
         maxAge: 1000 * 60 * 60 * 24 * 3,
         httpOnly: true,
       });
-      res.status(201).json({ user: user._id });
+      res.status(201).json({ user: user, token: token });
     }
   } catch (err) {
     res.status(400).json({ error: 'Error using Login function' });

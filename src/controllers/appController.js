@@ -13,7 +13,14 @@ content of each card ==>
 }
 */
 module.exports.postList = (req, res) => {
-  res.status(200).json({});
+  try {
+    Post.find()
+      .limit(10)
+      .then((data) => res.status(200).json(data));
+  } catch (err) {
+    console.log(err);
+    res.send(401).json({ error: 'Error fetching data from the database' });
+  }
 };
 
 /* Endpoint: /post/:postId : returns the details of a particular post
