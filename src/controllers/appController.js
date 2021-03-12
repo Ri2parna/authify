@@ -64,9 +64,9 @@ Endpoint: /post/:postId/comments
 Returns: Status code 201 - Created
 */
 module.exports.createPost = (req, res) => {
-  const { userId, title, subTitle, body } = req.body;
+  const { userId, username, title, subTitle, body } = req.body;
   try {
-    Post.create({ userId, title, subTitle, body }).then((data) =>
+    Post.create({ userId, username, title, subTitle, body }).then((data) =>
       res.status(201).json(data)
     );
   } catch (error) {

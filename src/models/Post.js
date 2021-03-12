@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const PostContent = require('../models/PostContent');
 
 const postSchema = new mongoose.Schema({
-  userId: String,
+  userId: { type: mongoose.SchemaTypes.ObjectId, required: true },
+  username: String,
   postId: mongoose.SchemaTypes.ObjectId,
   title: String,
   subTitle: String,
