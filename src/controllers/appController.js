@@ -1,6 +1,11 @@
 // perfoms the logic for the api requests form the application
 const Post = require('../models/Post');
 const PostContent = require('../models/PostContent');
+// error handler function
+const handleErrors = (err) => {
+  // test
+};
+
 /* Endpoint: /posts: returns a list of posts 
 content of each card ==> 
 {
@@ -65,14 +70,14 @@ Returns: Status code 201 - Created
 */
 module.exports.createPost = (req, res) => {
   const { userId, username, title, subTitle, body } = req.body;
-  try {
-    Post.create({ userId, username, title, subTitle, body }).then((data) =>
-      res.status(201).json(data)
-    );
-  } catch (error) {
-    console.log(error);
-    res.status(401).json({ error: 'there has been an error' });
-  }
+  Post.create({ userId, username, title, subTitle, body })
+    .then((data) => res.status(201).json(data))
+    .catch((err) => {
+      console.log(err); // handleErrors instead of just logging them
+      res
+        .status(401)
+        .json({ error: 'Could not save the post, there was an error' });
+    });
 };
 
 module.exports.userDetails = (req, res) => {
